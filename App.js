@@ -1,15 +1,18 @@
 import { View, Text } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+import Homescreen from "./screens/homescreen";
+
+const Stack=createStackNavigator();
 
 export default function App() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Universal React with Expo</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="homescreen" component={Homescreen}
+        options={{headerShown:false}}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+    
   );
 }
