@@ -4,15 +4,18 @@ import { NavigationContainer } from "@react-navigation/native";
 import Homescreen from "./screens/homescreen";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
       <Provider store={store}>
-        <Stack.Navigator>
-          <Stack.Screen name="homescreen" component={Homescreen} />
-        </Stack.Navigator>
+        <SafeAreaProvider>
+          <Stack.Navigator>
+            <Stack.Screen name="homescreen" component={Homescreen} />
+          </Stack.Navigator>
+        </SafeAreaProvider>
       </Provider>
     </NavigationContainer>
   );
