@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import {
   FlatList,
   Image,
@@ -13,7 +14,7 @@ const data = [
     id: 1,
     title: "Get a ride",
     image: "https://links.papareact.com/3pn",
-    screen: "Mapscreen",
+    screen: "mapscreen",
   },
   {
     id: 2,
@@ -23,8 +24,9 @@ const data = [
   },
 ];
 const NavOptions = () => {
+    const navigation=useNavigation();
   return (
-    <View>
+    <View style={{}}>
       {/*
             <ScrollView
             horizontal
@@ -42,7 +44,10 @@ const NavOptions = () => {
         data={data}
         renderItem={({ item }) => (
           <>
-            <TouchableOpacity>
+            <TouchableOpacity 
+            onPress={()=>{
+                navigation.navigate(item.screen)
+            }}>
               <View
                 style={{
                   backgroundColor: "lightgrey",
@@ -60,6 +65,7 @@ const NavOptions = () => {
                 />
                 <Text style={styles.title}> {item.title}</Text>
                 <Icon
+                
                   name="arrowright"
                   type="antdesign"
                   color="white"
