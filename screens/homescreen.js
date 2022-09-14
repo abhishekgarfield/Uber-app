@@ -3,10 +3,9 @@ import { useLayoutEffect, useState } from "react";
 import { Image, SafeAreaView, Text, TextInput, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import NavOptions from "../components/navOptions";
-
-import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import { GOOGLE_MAPS_APIKEY } from "@env";
+import { AUTOCOMPLETE_MAPS_APIKEY } from "@env";
 import { Icon } from "react-native-elements";
+
 const Homescreen = () => {
   const [text, setText] = useState("");
 
@@ -66,7 +65,8 @@ const Homescreen = () => {
           <TextInput
             onChangeText={(newText) => {
               setText(newText);
-              const url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${text}&apiKey=0a3e47fe673f4fcc96e49ffcbc97a4f1`;
+
+              const url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${text}&apiKey=${AUTOCOMPLETE_MAPS_APIKEY}`;
               if (text.length >= 1) {
                 fetch(url, { method: "GET" })
                   .then((response) => {
