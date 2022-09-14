@@ -3,21 +3,31 @@ import { View } from "react-native";
 import { Image, Text } from "react-native-animatable";
 import { Icon } from "react-native-elements";
 
-import { SparklesIcon } from "react-native-heroicons/solid";
-
-import { styleProps } from "react-native-web/dist/cjs/modules/forwardedProps";
-
 const ErrorScreen = () => {
-    const navigation=useNavigation();
+  const navigation = useNavigation();
   return (
-    
-    <View style={{ flexGrow: 1,position:"relative" }}>
-        <SparklesIcon size={30} color={"red"}/>
+    <View style={{ flexGrow: 1 }}>
+      <View style={{ position: "absolute", zIndex: 2, right: 4, top: 5 }}>
+        <Icon
+        onPress={()=>{
+          navigation.navigate("homescreen");
+        }}
+          name="close"
+          type="antdesign"
+          color="white"
+          size={30}
+          style={{
+            backgroundColor: "red",
+            borderRadius: 50,
+            padding: 3,
+          }}
+        />
+      </View>
       <Image
         source={{
           uri: "https://media.giphy.com/media/CNHwfdaHPNYQPzAIoS/giphy.gif",
         }}
-        style={{ flexGrow: 2 }}
+        style={{ flexGrow: 2, zIndex: -1 }}
       />
       <Text
         iterationCount={1}
