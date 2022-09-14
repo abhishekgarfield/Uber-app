@@ -1,20 +1,21 @@
 import { useNavigation } from "@react-navigation/native";
-import { useLayoutEffect } from "react";
-import { Image, SafeAreaView, Text, View } from "react-native";
+import { useLayoutEffect, useState } from "react";
+import { Image, SafeAreaView, Text, TextInput, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import NavOptions from "../components/navOptions";
 
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_MAPS_APIKEY } from "@env";
+import { Icon } from "react-native-elements";
 const Homescreen = () => {
-  const data = useSelector((state) => {
-    return state.navigation.items;
-  });
+  const [text, setText] = useState("");
+
+  const [data, setData] = useState([]);
+
   const navigation = useNavigation();
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
-
     });
   }, []);
   return (
@@ -22,7 +23,7 @@ const Homescreen = () => {
       <View style={{ flexDirection: "column", padding: 15 }}>
         <Image
           style={{
-            height: 100,
+            height: 50,
             width: 100,
             resizeMode: "contain",
             padding: 10,
@@ -31,8 +32,12 @@ const Homescreen = () => {
             uri: "https://links.papareact.com/gzs",
           }}
         />
+        {/*
         <GooglePlacesAutocomplete
           placeholder="Where to go?"
+          minLength={2}
+          enablePoweredByContainer={false}
+          fetchDetails={true}
           styles={{
             container: { flex: 0 },
             textInput: { fontSize: 18 },
@@ -48,10 +53,81 @@ const Homescreen = () => {
           nearbyPlacesAPI="GooglePlacesSearch"
           debounce={400}
         />
+        */}
+        <View
+          style={{
+            backgroundColor: "rgb(247, 245, 245)",
+            borderRadius: 5,
+            marginVertical: 20,
+            alignItems: "center",
+            flexDirection: "row",
+          }}
+        >
+          <TextInput
+            onChangeText={(newText) => {
+              setText(newText);
+              const url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${text}&apiKey=0a3e47fe673f4fcc96e49ffcbc97a4f1`;
+              if (text.length >= 1) {
+                fetch(url, { method: "GET" })
+                  .then((response) => {
+                    return response.json();
+                  })
+                  .then((data) => {
+                    setData(data);
+                    data.features.map(({ properties }) => {
+                      console.log(properties.name);
+                    });
+                  });
+              }
+            }}
+            defaultValue={text}
+            style={{
+              flexGrow: 1,
+              fontSize: 20,
+              backgroundColor: "rgb(247, 245, 245)",
+              padding: 8,
+            }}
+            placeholder="Where to go ?"
+          />
+          {data.features?.length > 0 && (
+            <Icon
+              name="close"
+              type="antdesign"
+              color="white"
+              size={10}
+              onPress={() => {
+                setData({});
+                setText("");
+              }}
+              style={{
+                backgroundColor: "grey",
+                borderRadius: 50,
+                padding: 5,
+                marginVertical: 5,
+              }}
+            />
+          )}
+        </View>
+        {data.features?.map(({ properties }, index) => {
+          if (properties.name) {
+            return (
+              <View
+                key={index}
+                style={{
+                  borderBottomColor: "lightgrey",
+                  marginBottom: 10,
+                  borderBottomWidth: 1,
+                }}
+              >
+                <Text
+                  style={{ fontWeight: 15, fontWeight: "700", padding: 7 }}
+                >{`${properties.name},${properties.state},${properties.country}`}</Text>
+              </View>
+            );
+          }
+        })}
         <NavOptions />
       </View>
-
-      
     </SafeAreaView>
   );
 };
