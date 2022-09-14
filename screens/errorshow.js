@@ -6,7 +6,7 @@ import { Icon } from "react-native-elements";
 const ErrorScreen = () => {
   const navigation = useNavigation();
   return (
-    <View style={{ flexGrow: 1 }}>
+    <View style={{ flexGrow: 1,backgroundColor:"white" }}>
       <View style={{ position: "absolute", zIndex: 2, right: 4, top: 5 }}>
         <Icon
         onPress={()=>{
@@ -40,7 +40,7 @@ const ErrorScreen = () => {
           backgroundColor: "white",
         }}
       >
-        Kindly select your destination
+        Uber eats not yet available
       </Text>
     </View>
   );

@@ -25,8 +25,8 @@ const data = [
   },
 ];
 const NavOptions = () => {
-  const origin=useSelector(state=>state.navigation.origin);
-    const navigation=useNavigation();
+  const origin = useSelector((state) => state.navigation.origin);
+  const navigation = useNavigation();
   return (
     <View style={{}}>
       {/*
@@ -40,40 +40,53 @@ const NavOptions = () => {
             </ScrollView>
             */}
       <FlatList
-      style={{marginHorizontal:10}}
+        style={{ marginHorizontal: 10 }}
         horizontal
         keyExtractor={(item) => item.id}
         data={data}
         renderItem={({ item }) => (
           <>
-            <TouchableOpacity 
-            onPress={()=>{
-              if(origin)
-              {
-                navigation.navigate(item.screen)
-              }
-              else{
-                navigation.navigate("errorscreen")
-              }
-            }}>
+            <TouchableOpacity
+            disabled={!origin}
+              onPress={() => {
+                if(item.screen=="Eatscreen")
+                {
+                  navigation.navigate("errorscreen")
+                }
+                else{
+                navigation.navigate(item.screen);
+                }
+              }}
+            >
               <View
-                style={{
+                style={(origin)?{
                   backgroundColor: "lightgrey",
-                  alignItems:"flex-start",
+                  alignItems: "flex-start",
                   marginHorizontal: 10,
                   width: 150,
                   paddingHorizontal: 15,
-                  paddingVertical:15,
-                  justifyContent:"center"
-                }}
+                  paddingVertical: 15,
+                  justifyContent: "center",
+                }:{
+                  opacity:0.6,backgroundColor: "lightgrey",
+                alignItems: "flex-start",
+                marginHorizontal: 10,
+                width: 150,
+                paddingHorizontal: 15,
+                paddingVertical: 15,
+                justifyContent: "center",}}
               >
                 <Image
                   source={{ uri: item.image }}
-                  style={{ width: 160, height: 110, resizeMode:"contain",marginVertical:3 }}
+                  style={{
+                    width: 160,
+                    height: 110,
+                    resizeMode: "contain",
+                    marginVertical: 3,
+                  }}
                 />
                 <Text style={styles.title}> {item.title}</Text>
                 <Icon
-                
                   name="arrowright"
                   type="antdesign"
                   color="white"
