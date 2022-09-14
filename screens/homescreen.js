@@ -5,11 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import NavOptions from "../components/navOptions";
 import { AUTOCOMPLETE_MAPS_APIKEY } from "@env";
 import { Icon } from "react-native-elements";
+import { setDestination, setOrigin } from "../features/navslice";
+import { TouchableOpacity } from "react-native";
 
 const Homescreen = () => {
   const [text, setText] = useState("");
 
   const [data, setData] = useState([]);
+  const dispatch=useDispatch();
 
   const navigation = useNavigation();
   useLayoutEffect(() => {
@@ -89,7 +92,7 @@ const Homescreen = () => {
             }}
             placeholder="Where to go ?"
           />
-          {data.features?.length > 0 && (
+          {text?.length > 0 && (
             <Icon
               name="close"
               type="antdesign"
@@ -111,7 +114,20 @@ const Homescreen = () => {
         {data.features?.map(({ properties }, index) => {
           if (properties.name) {
             return (
-              <View
+              <TouchableOpacity
+              onPress={()=>{
+                setText(`${properties.name},${properties.state},${properties.country}`)
+                dispatch(setOrigin({
+                  location:{
+                    long:properties.lon,
+                    lat:properties.lat
+                  },
+                  description:`${properties.name},${properties.state},${properties.country}`
+                }))
+                setData({});
+                dispatch(setDestination(null));
+              }
+            }
                 key={index}
                 style={{
                   borderBottomColor: "lightgrey",
@@ -122,7 +138,7 @@ const Homescreen = () => {
                 <Text
                   style={{ fontWeight: 15, fontWeight: "700", padding: 7 }}
                 >{`${properties.name},${properties.state},${properties.country}`}</Text>
-              </View>
+              </TouchableOpacity>
             );
           }
         })}
