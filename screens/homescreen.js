@@ -12,7 +12,7 @@ const Homescreen = () => {
   const [text, setText] = useState("");
 
   const [data, setData] = useState([]);
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
 
   const navigation = useNavigation();
   useLayoutEffect(() => {
@@ -101,6 +101,7 @@ const Homescreen = () => {
               onPress={() => {
                 setData({});
                 setText("");
+                dispatch(setOrigin(null));
               }}
               style={{
                 backgroundColor: "grey",
@@ -115,19 +116,22 @@ const Homescreen = () => {
           if (properties.name) {
             return (
               <TouchableOpacity
-              onPress={()=>{
-                setText(`${properties.name},${properties.state},${properties.country}`)
-                dispatch(setOrigin({
-                  location:{
-                    long:properties.lon,
-                    lat:properties.lat
-                  },
-                  description:`${properties.name},${properties.state},${properties.country}`
-                }))
-                setData({});
-                dispatch(setDestination(null));
-              }
-            }
+                onPress={() => {
+                  setText(
+                    `${properties.name},${properties.state},${properties.country}`
+                  );
+                  dispatch(
+                    setOrigin({
+                      location: {
+                        long: properties.lon,
+                        lat: properties.lat,
+                      },
+                      description: `${properties.name},${properties.state},${properties.country}`,
+                    })
+                  );
+                  setData({});
+                  dispatch(setDestination(null));
+                }}
                 key={index}
                 style={{
                   borderBottomColor: "lightgrey",

@@ -1760,6 +1760,11 @@
   "resolved" "https://registry.npmjs.org/@sideway/pinpoint/-/pinpoint-2.0.0.tgz"
   "version" "2.0.0"
 
+"@types/geojson@^7946.0.8":
+  "integrity" "sha512-Nmh0K3iWQJzniTuPRcJn5hxXkfB1T1pgB89SBig5PlJQU5yocazeu4jATJlaA0GYFKWMqDdvYemoSnF2pXgLVA=="
+  "resolved" "https://registry.npmjs.org/@types/geojson/-/geojson-7946.0.10.tgz"
+  "version" "7946.0.10"
+
 "@types/graceful-fs@^4.1.2":
   "integrity" "sha512-anKkLmZZ+xm4p8JWBf4hElkM4XR+EZeA2M9BAkkTldmcyDY4mbdIJnRghDJH3Ov5ooY7/UAoENtmdMSkaAd7Cw=="
   "resolved" "https://registry.npmjs.org/@types/graceful-fs/-/graceful-fs-4.1.5.tgz"
@@ -2254,6 +2259,11 @@
     "qs" "6.7.0"
     "raw-body" "2.4.0"
     "type-is" "~1.6.17"
+
+"boolbase@^1.0.0":
+  "integrity" "sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww=="
+  "resolved" "https://registry.npmjs.org/boolbase/-/boolbase-1.0.0.tgz"
+  "version" "1.0.0"
 
 "bplist-creator@0.1.0":
   "integrity" "sha512-sXaHZicyEEmY86WyueLTQesbeoH/mquvarJaQNbjuOQO+7gbFcDEWqKmcWA4cOTLzFlfgvkiVxolk1k5bBIpmg=="
@@ -2829,6 +2839,30 @@
     "hyphenate-style-name" "^1.0.2"
     "isobject" "^3.0.1"
 
+"css-select@^5.1.0":
+  "integrity" "sha512-nwoRF1rvRRnnCqqY7updORDsuqKzqYJ28+oSMaJMMgOauh3fvwHqMS7EZpIPqK8GL+g9mKxF1vP/ZjSeNjEVHg=="
+  "resolved" "https://registry.npmjs.org/css-select/-/css-select-5.1.0.tgz"
+  "version" "5.1.0"
+  dependencies:
+    "boolbase" "^1.0.0"
+    "css-what" "^6.1.0"
+    "domhandler" "^5.0.2"
+    "domutils" "^3.0.1"
+    "nth-check" "^2.0.1"
+
+"css-tree@^1.1.3":
+  "integrity" "sha512-tRpdppF7TRazZrjJ6v3stzv93qxRcSsFmW6cX0Zm2NVKpxE1WV1HblnghVv9TreireHkqI/VDEsfolRF1p6y7Q=="
+  "resolved" "https://registry.npmjs.org/css-tree/-/css-tree-1.1.3.tgz"
+  "version" "1.1.3"
+  dependencies:
+    "mdn-data" "2.0.14"
+    "source-map" "^0.6.1"
+
+"css-what@^6.1.0":
+  "integrity" "sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw=="
+  "resolved" "https://registry.npmjs.org/css-what/-/css-what-6.1.0.tgz"
+  "version" "6.1.0"
+
 "csstype@^3.0.2":
   "integrity" "sha512-uX1KG+x9h5hIJsaKR9xHUeUraxf8IODOwq9JLNPq6BwB04a/xgpq3rcx47l5BZu5zBPlgD342tdke3Hom/nJRA=="
   "resolved" "https://registry.npmjs.org/csstype/-/csstype-3.1.0.tgz"
@@ -3014,6 +3048,36 @@
   dependencies:
     "path-type" "^4.0.0"
 
+"dom-serializer@^2.0.0":
+  "integrity" "sha512-wIkAryiqt/nV5EQKqQpo3SToSOV9J0DnbJqwK7Wv/Trc92zIAYZ4FlMu+JPFW1DfGFt81ZTCGgDEabffXeLyJg=="
+  "resolved" "https://registry.npmjs.org/dom-serializer/-/dom-serializer-2.0.0.tgz"
+  "version" "2.0.0"
+  dependencies:
+    "domelementtype" "^2.3.0"
+    "domhandler" "^5.0.2"
+    "entities" "^4.2.0"
+
+"domelementtype@^2.3.0":
+  "integrity" "sha512-OLETBj6w0OsagBwdXnPdN0cnMfF9opN69co+7ZrbfPGrdpPVNBUj02spi6B1N7wChLQiPn4CSH/zJvXw56gmHw=="
+  "resolved" "https://registry.npmjs.org/domelementtype/-/domelementtype-2.3.0.tgz"
+  "version" "2.3.0"
+
+"domhandler@^5.0.1", "domhandler@^5.0.2":
+  "integrity" "sha512-cgwlv/1iFQiFnU96XXgROh8xTeetsnJiDsTc7TYCLFd9+/WNkIqPTxiM/8pSd8VIrhXGTf1Ny1q1hquVqDJB5w=="
+  "resolved" "https://registry.npmjs.org/domhandler/-/domhandler-5.0.3.tgz"
+  "version" "5.0.3"
+  dependencies:
+    "domelementtype" "^2.3.0"
+
+"domutils@^3.0.1":
+  "integrity" "sha512-z08c1l761iKhDFtfXO04C7kTdPBLi41zwOZl00WS8b5eiaebNpY00HKbztwBq+e3vyqWNwWF3mP9YLUeqIrF+Q=="
+  "resolved" "https://registry.npmjs.org/domutils/-/domutils-3.0.1.tgz"
+  "version" "3.0.1"
+  dependencies:
+    "dom-serializer" "^2.0.0"
+    "domelementtype" "^2.3.0"
+    "domhandler" "^5.0.1"
+
 "dotenv@^10.0.0":
   "integrity" "sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q=="
   "resolved" "https://registry.npmjs.org/dotenv/-/dotenv-10.0.0.tgz"
@@ -3045,6 +3109,11 @@
   "version" "1.4.4"
   dependencies:
     "once" "^1.4.0"
+
+"entities@^4.2.0":
+  "integrity" "sha512-oYp7156SP8LkeGD0GF85ad1X9Ai79WtRsZ2gxJqtBuzH+98YUV6jkHEKlZkMbcrjJjIVJNIDP/3WL9wQkoPbWA=="
+  "resolved" "https://registry.npmjs.org/entities/-/entities-4.4.0.tgz"
+  "version" "4.4.0"
 
 "env-editor@^0.4.1":
   "integrity" "sha512-ObFo8v4rQJAE59M69QzwloxPZtd33TpYEIjtKD1rrFDcM1Gd7IkDxEBU+HriziN6HSHQnBJi8Dmy+JWkav5HKA=="
@@ -4543,6 +4612,11 @@
   "resolved" "https://registry.npmjs.org/md5hex/-/md5hex-1.0.0.tgz"
   "version" "1.0.0"
 
+"mdn-data@2.0.14":
+  "integrity" "sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow=="
+  "resolved" "https://registry.npmjs.org/mdn-data/-/mdn-data-2.0.14.tgz"
+  "version" "2.0.14"
+
 "media-typer@0.3.0":
   "integrity" "sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ=="
   "resolved" "https://registry.npmjs.org/media-typer/-/media-typer-0.3.0.tgz"
@@ -5103,6 +5177,13 @@
   dependencies:
     "path-key" "^2.0.0"
 
+"nth-check@^2.0.1":
+  "integrity" "sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w=="
+  "resolved" "https://registry.npmjs.org/nth-check/-/nth-check-2.1.1.tgz"
+  "version" "2.1.1"
+  dependencies:
+    "boolbase" "^1.0.0"
+
 "nullthrows@^1.1.1":
   "integrity" "sha512-2vPPEi+Z7WqML2jZYddDIfy5Dqb0r2fze2zTxNNknZaFpVHU3mFB3R+DWeJWGVx0ecvttSGlJTI+WG+8Z4cDWw=="
   "resolved" "https://registry.npmjs.org/nullthrows/-/nullthrows-1.1.1.tgz"
@@ -5614,6 +5695,13 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   "version" "17.0.2"
 
+"react-native-animatable@^1.3.3":
+  "integrity" "sha512-2ckIxZQAsvWn25Ho+DK3d1mXIgj7tITkrS4pYDvx96WyOttSvzzFeQnM2od0+FUMzILbdHDsDEqZvnz1DYNQ1w=="
+  "resolved" "https://registry.npmjs.org/react-native-animatable/-/react-native-animatable-1.3.3.tgz"
+  "version" "1.3.3"
+  dependencies:
+    "prop-types" "^15.7.2"
+
 "react-native-codegen@^0.69.1":
   "integrity" "sha512-yPcgMHD4mqLbckqnWjFBaxomDnBREfRjDi2G/WxNyPBQLD+PXUEmZTkDx6QoOXN+Bl2SkpnNOSsLE2+/RUHoPw=="
   "resolved" "https://registry.npmjs.org/react-native-codegen/-/react-native-codegen-0.69.2.tgz"
@@ -5670,6 +5758,18 @@
   "resolved" "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.0.7.tgz"
   "version" "0.0.7"
 
+"react-native-heroicons@^3.2.0":
+  "integrity" "sha512-M5jlhReLBALrmeKIjH1qgF3OCNphfw8xKpRlHpX8OH4zgsC3L6+Lt+c4/hNxSbxUIN2+s8XC0eK/NZLku14IzA=="
+  "resolved" "https://registry.npmjs.org/react-native-heroicons/-/react-native-heroicons-3.2.0.tgz"
+  "version" "3.2.0"
+
+"react-native-maps@^1.3.1":
+  "integrity" "sha512-qvsDr1Nzp36FQ06cWkOGvJyu5/7Cz2NMKimOGGmgphvCWmh/k3JwUFkID44OS/l7qSBsCJsZsI6MpkRX87QBuQ=="
+  "resolved" "https://registry.npmjs.org/react-native-maps/-/react-native-maps-1.3.1.tgz"
+  "version" "1.3.1"
+  dependencies:
+    "@types/geojson" "^7946.0.8"
+
 "react-native-ratings@8.0.4":
   "integrity" "sha512-Xczu5lskIIRD6BEdz9A0jDRpEck/SFxRqiglkXi0u67yAtI1/pcJC76P4MukCbT8K4BPVl+42w83YqXBoBRl7A=="
   "resolved" "https://registry.npmjs.org/react-native-ratings/-/react-native-ratings-8.0.4.tgz"
@@ -5691,6 +5791,14 @@
   "integrity" "sha512-mKOfBLIBFBcs9br1rlZDvxD5+mAl8Gfr5CounwJtxI6Z82rGrMO+Kgl9EIg3RMVf3G855a85YVqHJL2f5EDRlw=="
   "resolved" "https://registry.npmjs.org/react-native-size-matters/-/react-native-size-matters-0.3.1.tgz"
   "version" "0.3.1"
+
+"react-native-svg@^13.1.0":
+  "integrity" "sha512-drYa+0piaQ27xFEp1MxRBSu6eHbR37qQITKTHNOmPv1NhPUyZ5tH4ICWe7aTLlB2u6KEhpSHl63HJi3jpZFtvw=="
+  "resolved" "https://registry.npmjs.org/react-native-svg/-/react-native-svg-13.1.0.tgz"
+  "version" "13.1.0"
+  dependencies:
+    "css-select" "^5.1.0"
+    "css-tree" "^1.1.3"
 
 "react-native-vector-icons@^9.2.0":
   "integrity" "sha512-wKYLaFuQST/chH3AJRjmOLoLy3JEs1JR6zMNgTaemFpNoXs0ztRnTxcxFD9xhX7cJe1/zoN5BpQYe7kL0m5yyA=="
@@ -6320,6 +6428,11 @@
   "version" "0.5.7"
 
 "source-map@^0.6.0":
+  "integrity" "sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g=="
+  "resolved" "https://registry.npmjs.org/source-map/-/source-map-0.6.1.tgz"
+  "version" "0.6.1"
+
+"source-map@^0.6.1":
   "integrity" "sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g=="
   "resolved" "https://registry.npmjs.org/source-map/-/source-map-0.6.1.tgz"
   "version" "0.6.1"

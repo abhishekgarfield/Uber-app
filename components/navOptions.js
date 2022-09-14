@@ -8,7 +8,8 @@ import {
   View,
 } from "react-native";
 import { Icon } from "react-native-elements";
-import { ScrollView } from "react-native-gesture-handler";
+import { useSelector } from "react-redux";
+import ErrorScreen from "../screens/errorshow";
 const data = [
   {
     id: 1,
@@ -24,6 +25,7 @@ const data = [
   },
 ];
 const NavOptions = () => {
+  const origin=useSelector(state=>state.navigation.origin);
     const navigation=useNavigation();
   return (
     <View style={{}}>
@@ -46,7 +48,13 @@ const NavOptions = () => {
           <>
             <TouchableOpacity 
             onPress={()=>{
+              if(origin)
+              {
                 navigation.navigate(item.screen)
+              }
+              else{
+                navigation.navigate("errorscreen")
+              }
             }}>
               <View
                 style={{
