@@ -103,6 +103,7 @@ const NavigationCard = () => {
                     description: `${properties.name},${properties.state},${properties.country}`,
                   })
                 );
+                navigation.navigate("rideoptionscard");
                 setData({});
               }}
               key={index}
@@ -143,7 +144,6 @@ const NavigationCard = () => {
             alignItems: "center",
           }}
           onPress={()=>{
-            console.log("here");
             if(destination)
             {
 
