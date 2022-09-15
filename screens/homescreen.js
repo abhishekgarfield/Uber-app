@@ -77,7 +77,7 @@ const Homescreen = () => {
                   })
                   .then((data) => {
                     setData(data);
-                    data.features.map(({ properties }) => {
+                    data.features?.map(({ properties }) => {
                       console.log(properties.name);
                     });
                   });
@@ -123,8 +123,9 @@ const Homescreen = () => {
                   dispatch(
                     setOrigin({
                       location: {
-                        long: properties.lon,
-                        lat: properties.lat,
+                        
+                        latitude: properties.lat,
+                        longitude: properties.lon,
                       },
                       description: `${properties.name},${properties.state},${properties.country}`,
                     })

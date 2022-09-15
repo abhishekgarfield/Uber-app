@@ -1,9 +1,12 @@
 import { useNavigation } from "@react-navigation/native";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput,TouchableOpacity } from "react-native";
 import { useState } from "react";
 import { setDestination } from "../features/navslice";
+import { useDispatch } from "react-redux";
+import { Icon } from "react-native-elements";
+import {AUTOCOMPLETE_MAPS_APIKEY} from "@env";
 const NavigationCard = () => {
-  const dispatch = useD;
+  const dispatch = useDispatch();
   const navigation = useNavigation();
   const [text, setText] = useState("");
   const [data, setData] = useState([]);
@@ -30,7 +33,7 @@ const NavigationCard = () => {
                 })
                 .then((data) => {
                   setData(data);
-                  data.features.map(({ properties }) => {
+                  data.features?.map(({ properties }) => {
                     console.log(properties.name);
                   });
                 });
@@ -76,8 +79,8 @@ const NavigationCard = () => {
                 dispatch(
                   setDestination({
                     location: {
-                      long: properties.lon,
-                      lat: properties.lat,
+                      longitude: properties.lon,
+                      latitude: properties.lat,
                     },
                     description: `${properties.name},${properties.state},${properties.country}`,
                   })
