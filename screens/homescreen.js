@@ -78,7 +78,6 @@ const Homescreen = () => {
                   .then((data) => {
                     setData(data);
                     data.features?.map(({ properties }) => {
-                      console.log(properties.name);
                     });
                   });
               }

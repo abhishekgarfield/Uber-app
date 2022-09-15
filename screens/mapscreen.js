@@ -13,9 +13,7 @@ const Mapscreen = () => {
   const Stack = createStackNavigator();
   const origin = useSelector((state) => state.navigation.origin);
   const destination = useSelector((state) => state.navigation.destination);
-  useEffect(() => {
-    console.log(origin.description);
-  }, []);
+  
   return (
     <View style={{ flexDirection: "column", display: "flex", flexGrow: 1 }}>
       <Map origin={origin} destination={destination} />
