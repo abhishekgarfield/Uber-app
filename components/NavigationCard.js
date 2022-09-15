@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, TextInput,TouchableOpacity } from "react-native";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { setDestination } from "../features/navslice";
 import { useDispatch } from "react-redux";
 import { Icon } from "react-native-elements";
@@ -10,13 +10,17 @@ const NavigationCard = () => {
   const navigation = useNavigation();
   const [text, setText] = useState("");
   const [data, setData] = useState([]);
+  const mapRef=useRef(null);
   return (
-    <View>
+    <View style={{backgroundColor:"white",
+    paddingHorizontal:15,}}>
+        <Text style={{fontWeight:"600",fontSize:20,marginTop:10,textAlign:"center"}}>Welcome Abhishek !</Text>
       <View
         style={{
           backgroundColor: "rgb(247, 245, 245)",
           borderRadius: 5,
-          marginVertical: 20,
+          marginVertical: 15,
+          flexGrow:1,
           alignItems: "center",
           flexDirection: "row",
         }}
@@ -33,15 +37,13 @@ const NavigationCard = () => {
                 })
                 .then((data) => {
                   setData(data);
-                  data.features?.map(({ properties }) => {
-                    console.log(properties.name);
-                  });
                 });
             }
           }}
           defaultValue={text}
           style={{
             flexGrow: 1,
+            flexBasis:20,
             fontSize: 20,
             backgroundColor: "rgb(247, 245, 245)",
             padding: 8,
