@@ -20,7 +20,6 @@ const Mapscreen = () => {
       <SafeAreaView style={{flexGrow: 1 ,backgroundColor:"white"}}>
       
         <Stack.Navigator>
-        
           <Stack.Screen
             name="navigationcard"
             component={NavigationCard}
