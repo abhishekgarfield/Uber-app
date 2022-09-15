@@ -6,6 +6,7 @@ import { AUTOCOMPLETE_MAPS_APIKEY } from "@env";
 
 const Map = ({ origin, destination }) => {
   const [coorddata, setCoorddata] = useState(null);
+  const [formattedCoordinate, setformattedCords] = useState(null);
   const routeCoords = () => {
     const url = `https://api.geoapify.com/v1/routing?waypoints=${origin.location.latitude}%2C${origin.location.longitude}%7C${destination.location.latitude}%2C${destination.location.longitude}&mode=drive&apiKey=${AUTOCOMPLETE_MAPS_APIKEY}`;
     fetch(url, { method: "get" })
@@ -16,11 +17,37 @@ const Map = ({ origin, destination }) => {
         setCoorddata(data);
       });
   };
+  const formattedCoords = () => {
+    const temp = [];
+    if (coorddata) {
+      coorddata.features[0].geometry.coordinates[0].map(
+        ([longitude, latitude]) => {
+          temp.push({
+            longitude: longitude,
+            latitude: latitude,
+          });
+        }
+      );
+      temp.unshift({
+        latitude: origin.location.latitude,
+        longitude: origin.location.longitude,
+      });
+      temp.push({
+        latitude: destination.location.latitude,
+        longitude: destination.location.longitude,
+      });
+      setformattedCords(temp);
+    }
+  };
   useEffect(() => {
-    routeCoords();
+    destination && routeCoords();
     console.log("here");
-    console.log(coorddata?.features.geometry.coordinates)
+    console.log(coorddata);
   }, [destination]);
+  useEffect(() => {
+    formattedCoords();
+    console.log(formattedCoordinate);
+  }, [coorddata]);
   return (
     <View style={{ backgroundColor: "red", flexGrow: 1 }}>
       <MapView
@@ -55,12 +82,14 @@ const Map = ({ origin, destination }) => {
                 longitude: destination.location.longitude,
               }}
             />
-            <Polyline
-              coordinates={coorddata?.features.geometry.coordinates}
-              strokeColor="#000" // fallback for when `strokeColors` is not supported by the map-provider
-              strokeColors={["#7F0000"]}
-              strokeWidth={3}
-            />
+            {coorddata && (
+              <Polyline
+                coordinates={formattedCoordinate}
+                strokeColor="#000" // fallback for when `strokeColors` is not supported by the map-provider
+                strokeColors={["#7F0000"]}
+                strokeWidth={3}
+              />
+            )}
           </>
         )}
       </MapView>
