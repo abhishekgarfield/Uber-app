@@ -62,6 +62,8 @@ const Homescreen = () => {
             borderRadius: 5,
             marginVertical: 20,
             alignItems: "center",
+            flexGrow:1,
+            justifyContent:"space-between",
             flexDirection: "row",
           }}
         >
@@ -86,6 +88,7 @@ const Homescreen = () => {
             style={{
               flexGrow: 1,
               fontSize: 20,
+              flexBasis:20,
               backgroundColor: "rgb(247, 245, 245)",
               padding: 8,
             }}

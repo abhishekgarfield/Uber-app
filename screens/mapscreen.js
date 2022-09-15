@@ -17,7 +17,7 @@ const Mapscreen = () => {
   return (
     <View style={{ flexDirection: "column", display: "flex", flexGrow: 1 }}>
       <Map origin={origin} destination={destination} />
-      <View style={{ backgroundColor: "yellow", flexGrow: 1 }}>
+      <View style={{flexGrow: 1 }}>
         <Stack.Navigator>
           <Stack.Screen
             name="navigationcard"
