@@ -16,9 +16,9 @@ const data=[{
 const Navfav=()=>{
     return(
         <ScrollView contentContainerStyle={{alignItems:"center"}}>
-            {data.map((item)=>
+            {data.map((item,index)=>
                 <>
-                <TouchableOpacity style={{flexDirection:"row",alignItems:"center",padding:17}}>
+                <TouchableOpacity style={{flexDirection:"row",alignItems:"center",padding:17}} key={index}>
                         <Icon
                         type="ionicon"
                         name={item.icon}

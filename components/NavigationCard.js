@@ -1,10 +1,11 @@
 import { useNavigation } from "@react-navigation/native";
-import { View, Text, TextInput,TouchableOpacity } from "react-native";
+import { View, Text, TextInput,TouchableOpacity,Key } from "react-native";
 import { useEffect, useRef, useState } from "react";
 import { setDestination } from "../features/navslice";
 import { useDispatch, useSelector } from "react-redux";
 import { Icon } from "react-native-elements";
 import {AUTOCOMPLETE_MAPS_APIKEY} from "@env";
+import Navfav from "./navfov";
 const NavigationCard = () => {
     const destination=useSelector(state=>state.navigation.destination);
   const dispatch = useDispatch();
@@ -109,6 +110,7 @@ const NavigationCard = () => {
           );
         }
       })}
+      <Navfav/>
     </View>
   );
 };
