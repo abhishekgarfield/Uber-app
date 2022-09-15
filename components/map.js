@@ -9,7 +9,6 @@ const Map = ({ origin, destination }) => {
     }
     useEffect(()=>{
       routeCoords();
-      console.log(destination?.location);
     },[destination])
   return (
     <View style={{ backgroundColor: "red", flexGrow: 1 }}>
@@ -25,6 +24,7 @@ const Map = ({ origin, destination }) => {
       >
         <Marker
           title="origin"
+          pinColor="green"
           description={origin.description}
           identifier="origin"
           coordinate={{
@@ -35,6 +35,7 @@ const Map = ({ origin, destination }) => {
         {destination && (
             <>
           <Marker
+          pinColor="red"
             title="destination"
             description={destination.description}
             identifier="destination"
@@ -43,7 +44,12 @@ const Map = ({ origin, destination }) => {
               longitude: destination.location.longitude,
             }}
           />
-          <Polyline/>
+          <Polyline
+        
+        coordinates={[destination.location,origin.location]}
+        strokeColor="#000" // fallback for when `strokeColors` is not supported by the map-provider
+          strokeColors={['#7F0000']}
+          strokeWidth={3}/>
           </>
         )}
         
