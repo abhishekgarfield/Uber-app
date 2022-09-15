@@ -1,15 +1,25 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { View } from "react-native";
 import MapView, { Marker, Polygon } from "react-native-maps";
 import { Polyline } from "react-native-maps";
+import { AUTOCOMPLETE_MAPS_APIKEY } from "@env";
 
 const Map = ({ origin, destination }) => {
-    const routeCoords=()=>{
-
-    }
-    useEffect(()=>{
-      routeCoords();
-    },[destination])
+  const [coorddata, setCoorddata] = useState(null);
+  const routeCoords = () => {
+    const url = `https://api.geoapify.com/v1/routing?waypoints=${origin.location.latitude}%2C${origin.location.longitude}%7C${destination.location.latitude}%2C${destination.location.longitude}&mode=drive&apiKey=${AUTOCOMPLETE_MAPS_APIKEY}`;
+    fetch(url, { method: "get" })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setCoorddata(data);
+      });
+  };
+  useEffect(() => {
+    routeCoords();
+    console.log(here);
+  }, [destination]);
   return (
     <View style={{ backgroundColor: "red", flexGrow: 1 }}>
       <MapView
@@ -33,27 +43,25 @@ const Map = ({ origin, destination }) => {
           }}
         />
         {destination && (
-            <>
-          <Marker
-          pinColor="red"
-            title="destination"
-            description={destination.description}
-            identifier="destination"
-            coordinate={{
-              latitude: destination.location.latitude,
-              longitude: destination.location.longitude,
-            }}
-          />
-          <Polyline
-        
-        coordinates={[destination.location,origin.location]}
-        strokeColor="#000" // fallback for when `strokeColors` is not supported by the map-provider
-          strokeColors={['#7F0000']}
-          strokeWidth={3}/>
+          <>
+            <Marker
+              pinColor="red"
+              title="destination"
+              description={destination.description}
+              identifier="destination"
+              coordinate={{
+                latitude: destination.location.latitude,
+                longitude: destination.location.longitude,
+              }}
+            />
+            <Polyline
+              coordinates={[destination.location, origin.location]}
+              strokeColor="#000" // fallback for when `strokeColors` is not supported by the map-provider
+              strokeColors={["#7F0000"]}
+              strokeWidth={3}
+            />
           </>
         )}
-        
-        
       </MapView>
     </View>
   );
