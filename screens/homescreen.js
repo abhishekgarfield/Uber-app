@@ -68,7 +68,7 @@ const Homescreen = () => {
           }}
         >
           <TextInput
-            onChangeText={(newText) => {
+          keyboardType="default"            onChangeText={(newText) => {
               setText(newText);
               
               const url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${text}&apiKey=${AUTOCOMPLETE_MAPS_APIKEY}`;

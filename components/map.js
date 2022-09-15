@@ -59,7 +59,7 @@ const Map = ({ origin, destination }) => {
     }
   },[origin,destination]);
   return (
-    <View style={{ backgroundColor: "red", flexGrow: 1 }}>
+    <View style={{  flexGrow: 1 }}>
       <MapView
         ref={mapRef}
         style={{ flexGrow: 1 }}
