@@ -17,7 +17,7 @@ const Navfav=()=>{
     return(
         <ScrollView contentContainerStyle={{alignItems:"center"}}>
             {data.map((item,index)=>
-                <>
+                
                 <TouchableOpacity style={{flexDirection:"row",alignItems:"center",padding:17}} key={index}>
                         <Icon
                         type="ionicon"
@@ -31,7 +31,7 @@ const Navfav=()=>{
                         <Text style={{fontWeight:"600",fontSize:17,color:"lightgrey"}}>{item.destination}</Text>
                         </View>
                 </TouchableOpacity>
-                </>
+                
             )}
         </ScrollView>
     );

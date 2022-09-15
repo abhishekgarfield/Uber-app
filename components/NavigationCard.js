@@ -1,33 +1,40 @@
 import { useNavigation } from "@react-navigation/native";
-import { View, Text, TextInput,TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { useEffect, useRef, useState } from "react";
 import { setDestination } from "../features/navslice";
 import { useDispatch, useSelector } from "react-redux";
 import { Icon } from "react-native-elements";
-import {AUTOCOMPLETE_MAPS_APIKEY} from "@env";
+import { AUTOCOMPLETE_MAPS_APIKEY } from "@env";
 import Navfav from "./navfov";
 const NavigationCard = () => {
-    const destination=useSelector(state=>state.navigation.destination);
+  const destination = useSelector((state) => state.navigation.destination);
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [text, setText] = useState("");
   const [data, setData] = useState([]);
-  useEffect(()=>{
-    if(destination)
-    {
-        setText(destination.description);
+  useEffect(() => {
+    if (destination) {
+      setText(destination.description);
     }
-  })
+  });
   return (
-    <View style={{backgroundColor:"white",
-    paddingHorizontal:15,}}>
-        <Text style={{fontWeight:"600",fontSize:20,marginTop:10,textAlign:"center"}}>Welcome Abhishek !</Text>
+    <View style={{ backgroundColor: "white", paddingHorizontal: 15 ,flexGrow:1}}>
+      <Text
+        style={{
+          fontWeight: "600",
+          fontSize: 20,
+          marginTop: 10,
+          textAlign: "center",
+        }}
+      >
+        Welcome Abhishek !
+      </Text>
       <View
         style={{
           backgroundColor: "rgb(247, 245, 245)",
           borderRadius: 5,
           marginVertical: 15,
-          flexGrow:1,
+          flexGrow: 1,
           alignItems: "center",
           flexDirection: "row",
         }}
@@ -50,7 +57,7 @@ const NavigationCard = () => {
           defaultValue={text}
           style={{
             flexGrow: 1,
-            flexBasis:20,
+            flexBasis: 20,
             fontSize: 20,
             backgroundColor: "rgb(247, 245, 245)",
             padding: 8,
@@ -110,7 +117,43 @@ const NavigationCard = () => {
           );
         }
       })}
-      <Navfav/>
+      <Navfav />
+      <View
+        style={{
+          flexGrow: 1,
+          flexDirection: "row",
+          justifyContent: "space-around",
+          alignItems:"flex-end"
+        }}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            backgroundColor: "black",
+            padding: 15,
+            borderRadius: 30,
+            alignItems: "center",
+          }}
+        >
+          <Icon
+            style={{ backgroundColor: "black" }}
+            type="font-awesome"
+            name="car"
+            color="white"
+            size={16}
+          />
+          <Text style={{ color: "white", marginHorizontal: 10 }}>Rides</Text>
+        </View>
+        <View style={{ flexDirection: "row", padding: 20 }}>
+          <Icon
+            type="ionicon"
+            name="fast-food-outline"
+            color="black"
+            size={16}
+          />
+          <Text>Rides</Text>
+        </View>
+      </View>
     </View>
   );
 };
