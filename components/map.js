@@ -8,7 +8,7 @@ const Map = ({ origin, destination }) => {
   const [coorddata, setCoorddata] = useState(null);
   const [formattedCoordinate, setformattedCords] = useState(null);
 
-  const mapRef=useRef(null);
+  const mapRef = useRef(null);
   const routeCoords = () => {
     const url = `https://api.geoapify.com/v1/routing?waypoints=${origin.location.latitude}%2C${origin.location.longitude}%7C${destination.location.latitude}%2C${destination.location.longitude}&mode=drive&apiKey=${AUTOCOMPLETE_MAPS_APIKEY}`;
     fetch(url, { method: "get" })
@@ -42,28 +42,33 @@ const Map = ({ origin, destination }) => {
     }
   };
   useEffect(() => {
-    destination && routeCoords();
+    if(destination){ routeCoords()};
   }, [destination]);
   useEffect(() => {
     formattedCoords();
   }, [coorddata]);
-  useEffect(()=>{
-    if(origin && destination)
-    {
-        mapRef.current.fitToSuppliedMarkers(["origin","destination"]);
+  useEffect(() => {
+    if (origin && destination) {
+      mapRef.current.fitToSuppliedMarkers(["origin", "destination"], {
+        edgePadding:{ top: 50, right: 50, bottom: 50, left: 50,  },
+      });
+    }else if(origin && !destination){
+            mapRef.current.fitToSuppliedMarkers(["origin"]);
+    } else {
+      return;
     }
-  })
+  },[origin,destination]);
   return (
     <View style={{ backgroundColor: "red", flexGrow: 1 }}>
       <MapView
-      ref={mapRef}
+        ref={mapRef}
         style={{ flexGrow: 1 }}
         mapType="mutedStandard"
         initialRegion={{
           latitude: origin.location.latitude,
           longitude: origin.location.longitude,
-          latitudeDelta: 0.005,
-          longitudeDelta: 0.005,
+          latitudeDelta: 0.05,
+          longitudeDelta: 0.05,
         }}
       >
         <Marker

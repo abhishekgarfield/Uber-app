@@ -10,6 +10,7 @@ import {
 import { Icon } from "react-native-elements";
 import { useSelector } from "react-redux";
 import ErrorScreen from "../screens/errorshow";
+import Navfav from "./navfov";
 const data = [
   {
     id: 1,
@@ -99,9 +100,11 @@ const NavOptions = () => {
                 />
               </View>
             </TouchableOpacity>
+            
           </>
         )}
       />
+      <Navfav/>
     </View>
   );
 };

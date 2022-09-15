@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { SafeAreaView, View } from "react-native";
 import { Text } from "react-native";
 import { useSelector } from "react-redux";
 import MapView, { Marker } from "react-native-maps";
@@ -17,8 +17,10 @@ const Mapscreen = () => {
   return (
     <View style={{ flexDirection: "column", display: "flex", flexGrow: 1 }}>
       <Map origin={origin} destination={destination} />
-      <View style={{flexGrow: 1 }}>
+      <SafeAreaView style={{flexGrow: 1 }}>
+      
         <Stack.Navigator>
+        
           <Stack.Screen
             name="navigationcard"
             component={NavigationCard}
@@ -26,7 +28,8 @@ const Mapscreen = () => {
           />
           <Stack.Screen name="rideoptionscard" component={RideOptionsCrad} />
         </Stack.Navigator>
-      </View>
+        
+      </SafeAreaView>
     </View>
   );
 };

@@ -1,16 +1,22 @@
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, TextInput,TouchableOpacity } from "react-native";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { setDestination } from "../features/navslice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Icon } from "react-native-elements";
 import {AUTOCOMPLETE_MAPS_APIKEY} from "@env";
 const NavigationCard = () => {
+    const destination=useSelector(state=>state.navigation.destination);
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [text, setText] = useState("");
   const [data, setData] = useState([]);
-  const mapRef=useRef(null);
+  useEffect(()=>{
+    if(destination)
+    {
+        setText(destination.description);
+    }
+  })
   return (
     <View style={{backgroundColor:"white",
     paddingHorizontal:15,}}>
