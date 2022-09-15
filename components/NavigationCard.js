@@ -150,7 +150,9 @@ const NavigationCard = () => {
             navigation.navigate("rideoptionscard");
             }
             else{
-                navigation.navigate("errorscreen");
+                navigation.navigate("errorscreen",{
+                    error:"Kindly select your destination"
+                });
             }
         }}
         >

@@ -1,10 +1,15 @@
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { View } from "react-native";
 import { Image, Text } from "react-native-animatable";
 import { Icon } from "react-native-elements";
 
 const ErrorScreen = () => {
   const navigation = useNavigation();
+  const {
+    params:{
+      error
+    }
+  }=useRoute();
   return (
     <View style={{ flexGrow: 1,backgroundColor:"white" }}>
       <View style={{ position: "absolute", zIndex: 2, right: 4, top: 5 }}>
@@ -40,7 +45,7 @@ const ErrorScreen = () => {
           backgroundColor: "white",
         }}
       >
-        Uber eats not yet available
+        {error}
       </Text>
     </View>
   );

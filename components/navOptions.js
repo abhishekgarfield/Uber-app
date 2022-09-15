@@ -52,7 +52,9 @@ const NavOptions = () => {
               onPress={() => {
                 if(item.screen=="Eatscreen")
                 {
-                  navigation.navigate("errorscreen")
+                  navigation.navigate("errorscreen",{
+                    error:"Uber eats not available yet"
+                  })
                 }
                 else{
                 navigation.navigate(item.screen);
