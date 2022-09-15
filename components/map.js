@@ -35,14 +35,14 @@ const Map = ({ origin, destination }) => {
         longitude: origin.location.longitude,
       });
       temp.push({
-        latitude: destination?.location.latitude,
-        longitude: destination?.location.longitude,
+        latitude: destination.location.latitude,
+        longitude: destination.location.longitude,
       });
       setformattedCords(temp);
     }
   };
   useEffect(() => {
-    if(destination){ routeCoords()};
+    destination && routeCoords();
   }, [destination]);
   useEffect(() => {
     formattedCoords();
@@ -50,7 +50,7 @@ const Map = ({ origin, destination }) => {
   useEffect(() => {
     if (origin && destination) {
       mapRef.current.fitToSuppliedMarkers(["origin", "destination"], {
-        edgePadding:{ top: 50, right: 50, bottom: 50, left: 50,  },
+        mapPadding: { top: 50, right: 50, bottom: 50, left: 100,  },
       });
     }else if(origin && !destination){
             mapRef.current.fitToSuppliedMarkers(["origin"]);
@@ -59,7 +59,7 @@ const Map = ({ origin, destination }) => {
     }
   },[origin,destination]);
   return (
-    <View style={{  flexGrow: 1 }}>
+    <View style={{ backgroundColor: "red", flexGrow: 1 }}>
       <MapView
         ref={mapRef}
         style={{ flexGrow: 1 }}

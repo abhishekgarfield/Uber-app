@@ -19,7 +19,7 @@ export default function App() {
             behavior={Platform.OS == "ios" ? "padding" : "height"}
             keyboardVerticalOffset={Platform.OS == "ios" ? -64 : 0}
           >
-            <Stack.Navigator>
+            <Stack.Navigator >
               <Stack.Screen name="homescreen" component={Homescreen} />
               <Stack.Screen
                 name="mapscreen"

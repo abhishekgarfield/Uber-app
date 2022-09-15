@@ -20,7 +20,7 @@ const NavigationCard = () => {
   });
   return (
     <>
-    <View style={{ backgroundColor: "white", paddingHorizontal: 15 ,flexGrow:1}}>
+    <View style={{ backgroundColor: "white", paddingHorizontal: 15 ,flexGrow:0}}>
       <Text
         style={{
           fontWeight: "600",
