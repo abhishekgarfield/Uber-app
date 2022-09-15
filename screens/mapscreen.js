@@ -17,7 +17,7 @@ const Mapscreen = () => {
   return (
     <View style={{ flexDirection: "column", display: "flex", flexGrow: 1 }}>
       <Map origin={origin} destination={destination} />
-      <SafeAreaView style={{flexGrow: 1 }}>
+      <SafeAreaView style={{flexGrow: 1 ,backgroundColor:"white"}}>
       
         <Stack.Navigator>
         

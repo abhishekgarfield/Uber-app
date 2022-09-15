@@ -1,4 +1,4 @@
-import { View, Text,KeyboardAvoidingView, Platform } from "react-native";
+import { View, Text, KeyboardAvoidingView, Platform } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import Homescreen from "./screens/homescreen";
@@ -14,16 +14,24 @@ export default function App() {
     <NavigationContainer>
       <Provider store={store}>
         <SafeAreaProvider>
-        <KeyboardAvoidingView style={{flexGrow:1}}
-        behavior={Platform.OS=="ios"?"padding":"height"}
-        keyboardVerticalOffset={Platform.OS=="ios"?-64:0}>
-          <Stack.Navigator>
-            <Stack.Screen name="homescreen" component={Homescreen} />
-            <Stack.Screen name="mapscreen" component={Mapscreen}
-            options={{headerShown:false}}/>
-            <Stack.Screen name="errorscreen" component={ErrorScreen}
-            options={{headerShown:false,presentation:"modal"}}/>
-          </Stack.Navigator>
+          <KeyboardAvoidingView
+            style={{ flexGrow: 1 }}
+            behavior={Platform.OS == "ios" ? "padding" : "height"}
+            keyboardVerticalOffset={Platform.OS == "ios" ? -64 : 0}
+          >
+            <Stack.Navigator>
+              <Stack.Screen name="homescreen" component={Homescreen} />
+              <Stack.Screen
+                name="mapscreen"
+                component={Mapscreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="errorscreen"
+                component={ErrorScreen}
+                options={{ headerShown: false, presentation: "modal" }}
+              />
+            </Stack.Navigator>
           </KeyboardAvoidingView>
         </SafeAreaProvider>
       </Provider>

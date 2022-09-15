@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Icon } from "react-native-elements";
 import { AUTOCOMPLETE_MAPS_APIKEY } from "@env";
 import Navfav from "./navfov";
+import { ScrollView } from "react-native-gesture-handler";
 const NavigationCard = () => {
   const destination = useSelector((state) => state.navigation.destination);
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const NavigationCard = () => {
     }
   });
   return (
+    <>
     <View style={{ backgroundColor: "white", paddingHorizontal: 15 ,flexGrow:1}}>
       <Text
         style={{
@@ -34,7 +36,6 @@ const NavigationCard = () => {
           backgroundColor: "rgb(247, 245, 245)",
           borderRadius: 5,
           marginVertical: 15,
-          flexGrow: 1,
           alignItems: "center",
           flexDirection: "row",
         }}
@@ -60,7 +61,8 @@ const NavigationCard = () => {
             flexBasis: 20,
             fontSize: 20,
             backgroundColor: "rgb(247, 245, 245)",
-            padding: 8,
+            paddingHorizontal:8,
+            paddingVertical:17
           }}
           placeholder="Where to go ?"
         />
@@ -117,16 +119,22 @@ const NavigationCard = () => {
           );
         }
       })}
-      <Navfav />
-      <View
-        style={{
+      </View>
+      
+      <ScrollView
+        contentContainerStyle={{
+          flexGrow: 1,
+          backgroundColor:"white"
+        }}
+      >
+        <Navfav />
+        <View style={{
           flexGrow: 1,
           flexDirection: "row",
           justifyContent: "space-around",
           alignItems:"flex-end"
-        }}
-      >
-        <View
+        }}>
+        <TouchableOpacity
           style={{
             flexDirection: "row",
             backgroundColor: "black",
@@ -134,6 +142,17 @@ const NavigationCard = () => {
             borderRadius: 30,
             alignItems: "center",
           }}
+          onPress={()=>{
+            console.log("here");
+            if(destination)
+            {
+
+            navigation.navigate("rideoptionscard");
+            }
+            else{
+                navigation.navigate("errorscreen");
+            }
+        }}
         >
           <Icon
             style={{ backgroundColor: "black" }}
@@ -143,18 +162,25 @@ const NavigationCard = () => {
             size={16}
           />
           <Text style={{ color: "white", marginHorizontal: 10 }}>Rides</Text>
-        </View>
-        <View style={{ flexDirection: "row", padding: 20 }}>
+        </TouchableOpacity>
+        <TouchableOpacity style={{ flexDirection: "row",
+            backgroundColor: "lightgrey",
+            padding: 15,
+            borderRadius: 30,
+            alignItems: "center",}}
+            disabled={true}
+            >
           <Icon
             type="ionicon"
             name="fast-food-outline"
             color="black"
             size={16}
           />
-          <Text>Rides</Text>
-        </View>
-      </View>
-    </View>
+          <Text style={{ marginHorizontal: 10 }}>Rides</Text>
+          </TouchableOpacity>
+          </View>
+      </ScrollView>
+    </>
   );
 };
 export default NavigationCard;

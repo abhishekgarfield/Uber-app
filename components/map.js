@@ -35,8 +35,8 @@ const Map = ({ origin, destination }) => {
         longitude: origin.location.longitude,
       });
       temp.push({
-        latitude: destination.location.latitude,
-        longitude: destination.location.longitude,
+        latitude: destination?.location.latitude,
+        longitude: destination?.location.longitude,
       });
       setformattedCords(temp);
     }

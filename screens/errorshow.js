@@ -10,7 +10,7 @@ const ErrorScreen = () => {
       <View style={{ position: "absolute", zIndex: 2, right: 4, top: 5 }}>
         <Icon
         onPress={()=>{
-          navigation.navigate("homescreen");
+          navigation.goBack();
         }}
           name="close"
           type="antdesign"
