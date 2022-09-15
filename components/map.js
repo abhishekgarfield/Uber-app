@@ -18,7 +18,8 @@ const Map = ({ origin, destination }) => {
   };
   useEffect(() => {
     routeCoords();
-    console.log(here);
+    console.log("here");
+    console.log(coorddata?.features.geometry.coordinates)
   }, [destination]);
   return (
     <View style={{ backgroundColor: "red", flexGrow: 1 }}>
@@ -55,7 +56,7 @@ const Map = ({ origin, destination }) => {
               }}
             />
             <Polyline
-              coordinates={[destination.location, origin.location]}
+              coordinates={coorddata?.features.geometry.coordinates}
               strokeColor="#000" // fallback for when `strokeColors` is not supported by the map-provider
               strokeColors={["#7F0000"]}
               strokeWidth={3}
