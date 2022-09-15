@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { View,Text, ScrollView, TouchableOpacity } from "react-native";
 import { Icon } from "react-native-elements";
 
 const data=[{
@@ -15,18 +15,25 @@ const data=[{
 }]
 const Navfav=()=>{
     return(
-        <View>
+        <ScrollView contentContainerStyle={{alignItems:"center"}}>
             {data.map((item)=>
                 <>
-                <View>
+                <TouchableOpacity style={{flexDirection:"row",alignItems:"center",padding:17}}>
                         <Icon
                         type="ionicon"
                         name={item.icon}
+                        size={25}
+                        color={"white"}
+                        style={{backgroundColor:"lightgrey",padding:10,borderRadius:50}}
                         />
-                </View>
+                        <View style={{flexDirection:"column",flexGrow:1,marginLeft:10}}>
+                        <Text style={{fontWeight:"bold",fontSize:19}}>{item.location}</Text>
+                        <Text style={{fontWeight:"600",fontSize:17,color:"lightgrey"}}>{item.destination}</Text>
+                        </View>
+                </TouchableOpacity>
                 </>
             )}
-        </View>
+        </ScrollView>
     );
 }
 export default Navfav;
