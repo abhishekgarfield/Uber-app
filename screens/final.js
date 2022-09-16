@@ -26,18 +26,19 @@ const Final = () => {
           </View>
           <Image
             source={{
-              uri: "https://media.giphy.com/media/gIkufF9Sv13pWTIvBs/giphy.gif",
+              uri: "https://media.giphy.com/media/ek3tx2Yd259RSg2SRk/giphy.gif",
             }}
-            style={{ flexGrow: 2, zIndex: -1 }}
+            style={{ flexGrow: 2, zIndex: -1 ,paddingHorizontal:20,paddingTop:100,marginTop:100}}
           />
           <Text
             iterationCount={1}
             animation="fadeInUp"
             style={{
-              flexGrow: 1,
+              flexGrow: 1.5,
               textAlign: "center",
               fontWeight: "bold",
               fontSize: 20,
+              paddingTop:70,
               backgroundColor: "white",
             }}
           >
