@@ -146,7 +146,16 @@ const RideOptionsCrad = () => {
             borderRadius: 5,
           }}
           onPress={()=>{
+             if(selected)
+             {
               navigation.navigate("final");
+             }
+             else{
+              navigation.navigate("errorscreen",{
+                error:"Select your ride first !"
+              })
+             }
+             
           }}
         >
           <Text

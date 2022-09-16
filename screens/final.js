@@ -26,7 +26,7 @@ const Final = () => {
           </View>
           <Image
             source={{
-              uri: "https://media.giphy.com/media/CNHwfdaHPNYQPzAIoS/giphy.gif",
+              uri: "https://media.giphy.com/media/gIkufF9Sv13pWTIvBs/giphy.gif",
             }}
             style={{ flexGrow: 2, zIndex: -1 }}
           />

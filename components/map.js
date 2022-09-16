@@ -58,7 +58,6 @@ const Map = ({ origin, destination }) => {
   };
   useEffect(() => {
     destination && routeCoords();
-    console.log(destination);
   }, [destination]);
   useEffect(() => {
     formattedCoords();
