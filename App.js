@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import Mapscreen from "./screens/mapscreen";
 import ErrorScreen from "./screens/errorshow.js";
+import Final from "./screens/final";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 const Stack = createStackNavigator();
 
@@ -31,6 +32,8 @@ export default function App() {
                 component={ErrorScreen}
                 options={{ headerShown: false, presentation: "modal" }}
               />
+              <Stack.Screen name="final" component={Final}
+              options={{headerShown:false,presentation:"modal"}}/>
             </Stack.Navigator>
           </KeyboardAvoidingView>
         </SafeAreaProvider>
