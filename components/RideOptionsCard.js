@@ -15,25 +15,25 @@ const data = [
   {
     id: "Uber-x-123",
     title: "UberX",
-    multiplier: 1,
+    multiplier: 10,
     image: "https://links.papareact.com/3pn",
   },
   {
     id: "Uber-x-3",
     title: "UberX5",
-    multiplier: 1.3,
+    multiplier: 15,
     image: "https://links.papareact.com/7pf",
   },
   {
     id: "Uber-xl-456",
     title: "Uber XL",
-    multiplier: 1.6,
+    multiplier: 25,
     image: "https://links.papareact.com/5w8",
   },
   {
     id: "Uber-lux-789",
     title: "Uber LUX",
-    multiplier: 2,
+    multiplier: 30,
     image: "https://links.papareact.com/7pf",
   },
 ];
@@ -96,6 +96,7 @@ const RideOptionsCrad = () => {
                 flexGrow: 1,
                 alignItems: "center",
                 backgroundColor: "white",
+                paddingHorizontal:10
               }}
               onPress={() => {
                 setSelected(item);
@@ -122,10 +123,11 @@ const RideOptionsCrad = () => {
                 >
                   {item.title}
                 </Text>
-                <Text style={{ textAlign: "center" }}>{timeinfo?.time}</Text>
+                <Text style={{ textAlign: "center" }}>{timeinfo?.time}
+                <Text style={{color:"green"}}>{timeinfo?.distance}</Text></Text>
               </View>
               <Text style={{ fontSize: 20, flexGrow: 1, textAlign: "center" }}>
-                ₹99
+                {`₹${item.multiplier*parseFloat(timeinfo?.distance)}`}
               </Text>
             </TouchableOpacity>
           );
