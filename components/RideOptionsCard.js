@@ -19,20 +19,20 @@ const data = [
   },
   {
     id: "Uber-x-3",
-    title: "UberX",
-    multiplier: 1,
-    image: "https://links.papareact.com/3pn",
+    title: "UberX5",
+    multiplier: 1.3,
+    image: "https://links.papareact.com/7pf",
   },
   {
     id: "Uber-xl-456",
     title: "Uber XL",
-    multiplier: 1.2,
+    multiplier: 1.6,
     image: "https://links.papareact.com/5w8",
   },
   {
     id: "Uber-lux-789",
     title: "Uber LUX",
-    multiplier: 1.75,
+    multiplier: 2,
     image: "https://links.papareact.com/7pf",
   },
 ];
@@ -46,51 +46,54 @@ const RideOptionsCrad = () => {
   }, []);
   return (
     <>
-    <SafeAreaView
-      style={{
-        backgroundColor: "yellow",
-        flexGrow: 1,
-      }}
-    >
-      <View
+      <SafeAreaView
         style={{
-          alignItems: "center",
-          flexDirection: "row",
-          justifyContent: "center",
-          flexGrow:1,
-          backgroundColor:"white"
+          backgroundColor: "yellow",
+          flexGrow: 1,
         }}
       >
-        <TouchableOpacity
-          style={{ position: "absolute", left: 7,backgroundColor:"white" }}
-          onPress={() => {
-            navigation.goBack();
+        <View
+          style={{
+            alignItems: "center",
+            flexDirection: "row",
+            justifyContent: "center",
+            flexGrow: 1,
+            paddingVertical:7,
+            backgroundColor: "white",
           }}
         >
-          <Icon name="chevron-left" type="fontawesome" size={40} />
-        </TouchableOpacity>
-        <Text
-          style={{ textAlign: "center", fontSize: 23, paddingVertical: 15 }}
-        >
-          Select a Ride
-        </Text>
-      </View>
+          <TouchableOpacity
+            style={{ position: "absolute", left: 7, backgroundColor: "white" }}
+            onPress={() => {
+              navigation.goBack();
+            }}
+          >
+            <Icon name="chevron-left" type="fontawesome" size={40} />
+          </TouchableOpacity>
+          <Text
+            style={{ textAlign: "center", fontSize: 23, paddingVertical: 15 }}
+          >
+            Select a Ride
+          </Text>
+        </View>
       </SafeAreaView>
       <FlatList
         data={data}
         keyExtractor={(item) => {
           return item.id;
         }}
-        style={{}}
+        style={{flexGrow:2}}
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
-              style={{
+              style={(selected?.id==item.id)?{flexDirection: "row",
+              flexGrow: 1,
+              alignItems: "center",
+              backgroundColor: "lightgrey"}:{
                 flexDirection: "row",
                 flexGrow: 1,
                 alignItems: "center",
                 backgroundColor: "white",
-                paddingVertical: 5,
               }}
               onPress={() => {
                 setSelected(item);
@@ -126,26 +129,33 @@ const RideOptionsCrad = () => {
           );
         }}
       />
-      
-    <SafeAreaView style={{backgroundColor:"white"}}>
-    <TouchableOpacity
-    style={{
-      flexGrow: 1,
-      backgroundColor: "black",
-      alignItems: "center",
-      flexDirection:"column",
-      justifyContent:"center",
-      marginHorizontal:10,
-      borderRadius:5,
-      
-    }}
-  >
-    <Text style={{ color: "white", textAlign: "center", fontSize: 25,padding:15,fontWeight:"500" }}>
-      {selected?selected.title:"Choose your ride"}
-    </Text>
-  </TouchableOpacity>
-  </SafeAreaView>
-  </>
+
+      <SafeAreaView style={{ backgroundColor: "white",marginTop:10 }}>
+        <TouchableOpacity
+          style={{
+            flexGrow: 1,
+            backgroundColor: "black",
+            alignItems: "center",
+            flexDirection: "column",
+            justifyContent: "center",
+            marginHorizontal: 10,
+            borderRadius: 5,
+          }}
+        >
+          <Text
+            style={{
+              color: "white",
+              textAlign: "center",
+              fontSize: 25,
+              padding: 15,
+              fontWeight: "500",
+            }}
+          >
+            {selected ? selected.title : "Choose your ride"}
+          </Text>
+        </TouchableOpacity>
+      </SafeAreaView>
+    </>
   );
 };
 export default RideOptionsCrad;
