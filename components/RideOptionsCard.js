@@ -145,6 +145,9 @@ const RideOptionsCrad = () => {
             marginHorizontal: 10,
             borderRadius: 5,
           }}
+          onPress={()=>{
+              navigation.navigate("final");
+          }}
         >
           <Text
             style={{

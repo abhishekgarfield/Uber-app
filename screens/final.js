@@ -1,12 +1,17 @@
-import { View } from "react-native";
+
 import * as Animatable from "react-native-animatable";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { View } from "react-native";
+import { Image, Text } from "react-native-animatable";
+import { Icon } from "react-native-elements";
 const Final = () => {
+    const navigation=useNavigation();
     return (
         <View style={{ flexGrow: 1,backgroundColor:"white" }}>
           <View style={{ position: "absolute", zIndex: 2, right: 4, top: 5 }}>
             <Icon
             onPress={()=>{
-              navigation.goBack();
+              navigation.navigate("homescreen");
             }}
               name="close"
               type="antdesign"
