@@ -21,11 +21,11 @@ export const navslice=createSlice({
                 settraveTimeinformation:function (state,action){
                     if(action.payload.time>60)
                     {
-                     action.payload.time=(action.payload.time/60).toFixed(1)+" hours";
+                     action.payload.time=(action.payload.time/60).toFixed(1)+" hours ";
                      state.travelTimeinformation=action.payload
                     }
                     else{
-                        action.payload.time=action.payload.time.toFixed(1)+" min"
+                        action.payload.time=action.payload.time.toFixed(1)+" min "
                         state.travelTimeinformation=action.payload;
                     }
                 }
