@@ -62,15 +62,16 @@ const Homescreen = () => {
             borderRadius: 5,
             marginVertical: 20,
             alignItems: "center",
-            flexGrow:1,
-            justifyContent:"space-between",
+            flexGrow: 1,
+            justifyContent: "space-between",
             flexDirection: "row",
           }}
         >
           <TextInput
-          keyboardType="default"            onChangeText={(newText) => {
+            keyboardType="default"
+            onChangeText={(newText) => {
               setText(newText);
-              
+
               const url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${text}&apiKey=${AUTOCOMPLETE_MAPS_APIKEY}`;
               if (text.length >= 0) {
                 fetch(url, { method: "GET" })
@@ -79,8 +80,7 @@ const Homescreen = () => {
                   })
                   .then((data) => {
                     setData(data);
-                    data.features?.map(({ properties }) => {
-                    });
+                    data.features?.map(({ properties }) => {});
                   });
               }
             }}
@@ -88,7 +88,7 @@ const Homescreen = () => {
             style={{
               flexGrow: 1,
               fontSize: 20,
-              flexBasis:20,
+              flexBasis: 20,
               backgroundColor: "rgb(247, 245, 245)",
               padding: 8,
             }}
@@ -125,7 +125,6 @@ const Homescreen = () => {
                   dispatch(
                     setOrigin({
                       location: {
-                        
                         latitude: properties.lat,
                         longitude: properties.lon,
                       },
