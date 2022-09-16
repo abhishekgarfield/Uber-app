@@ -9,6 +9,7 @@ import {
   View,
 } from "react-native";
 import { Icon } from "react-native-elements";
+import { useSelector } from "react-redux";
 
 const data = [
   {
@@ -37,6 +38,7 @@ const data = [
   },
 ];
 const RideOptionsCrad = () => {
+  const timeinfo=useSelector(state=>state.navigation.travelTimeinformation);
   const [selected, setSelected] = useState(null);
   const navigation = useNavigation();
   useLayoutEffect(() => {
@@ -120,7 +122,7 @@ const RideOptionsCrad = () => {
                 >
                   {item.title}
                 </Text>
-                <Text style={{ textAlign: "center" }}>{item.id}</Text>
+                <Text style={{ textAlign: "center" }}>{timeinfo?.time}</Text>
               </View>
               <Text style={{ fontSize: 20, flexGrow: 1, textAlign: "center" }}>
                 ₹99

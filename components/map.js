@@ -3,8 +3,11 @@ import { View } from "react-native";
 import MapView, { Marker, Polygon } from "react-native-maps";
 import { Polyline } from "react-native-maps";
 import { AUTOCOMPLETE_MAPS_APIKEY } from "@env";
+import { useDispatch } from "react-redux";
+import {settraveTimeinformation} from "../features/navslice"
 
 const Map = ({ origin, destination }) => {
+  const dispatch=useDispatch();
   const [coorddata, setCoorddata] = useState(null);
   const [formattedCoordinate, setformattedCords] = useState(null);
 
@@ -16,6 +19,10 @@ const Map = ({ origin, destination }) => {
         return response.json();
       })
       .then((data) => {
+        dispatch(settraveTimeinformation({
+          time:(data.features[0].properties.time/60),
+          distance:data.features[0].properties.distance/1000
+        }))
         setCoorddata(data);
       });
   };
@@ -43,6 +50,7 @@ const Map = ({ origin, destination }) => {
   };
   useEffect(() => {
     destination && routeCoords();
+    console.log(destination);
   }, [destination]);
   useEffect(() => {
     formattedCoords();

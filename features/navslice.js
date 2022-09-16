@@ -19,12 +19,18 @@ export const navslice=createSlice({
                     state.destination=action.payload;
                 },
                 settraveTimeinformation:function (state,action){
-                    state.travelTimeinformation=action.payload;
+                    if(action.payload.time>60)
+                    {
+                     action.payload.time/=60;
+                     state.travelTimeinformation=action.payload
+                    }
+                    else{
+                        state.travelTimeinformation=action.payload;
+                    }
                 }
                 
     }
 })
 export const {setOrigin,setDestination,settraveTimeinformation}=navslice.actions;
  const checkOrigin=(state)=>{state.navigation.origin}
- export {checkOrigin};
 export default navslice.reducer;
