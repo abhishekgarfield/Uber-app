@@ -1,43 +1,47 @@
-# My Universal React Project
+# Uber clone app
 
-<p>
-  <!-- iOS -->
-  <a href="https://itunes.apple.com/app/apple-store/id982107779">
-    <img alt="Supports Expo iOS" longdesc="Supports Expo iOS" src="https://img.shields.io/badge/iOS-4630EB.svg?style=flat-square&logo=APPLE&labelColor=999999&logoColor=fff" />
-  </a>
-  <!-- Android -->
-  <a href="https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=blankexample">
-    <img alt="Supports Expo Android" longdesc="Supports Expo Android" src="https://img.shields.io/badge/Android-4630EB.svg?style=flat-square&logo=ANDROID&labelColor=A4C639&logoColor=fff" />
-  </a>
-  <!-- Web -->
-  <a href="https://docs.expo.dev/workflow/web/">
-    <img alt="Supports Expo Web" longdesc="Supports Expo Web" src="https://img.shields.io/badge/web-4630EB.svg?style=flat-square&logo=GOOGLE-CHROME&labelColor=4285F4&logoColor=fff" />
-  </a>
-</p>
+## Functionality
+1) Homepage loads 
+2) You need to select a city otherwise you canot proceed
+3) Uber eats isn't available yet so you will get a error screen for uber eats
+4) With ridesyou shall be navigated to another screen (mapscreen
+5) Choose you destination 
+6) You will be moved to ride screen automaticatty 
+7) Book yur ride.
 
-## 🚀 How to use
 
-- Install packages with `yarn` or `npm install`.
-  - If you have native iOS code run `npx pod-install`
-- Run `yarn start` or `npm run start` to start the bundler.
-- Open the project in a React runtime to try it:
-  - iOS: [Client iOS](https://itunes.apple.com/app/apple-store/id982107779)
-  - Android: [Client Android](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=blankexample)
-  - Web: Any web browser
+##  Technologies used
+React Native ,Redux, Autocomplete Api , Routing Api , Css
 
-## Running/Modifying Native Code
+1) Homepage
 
-You can generate native iOS and Android projects from your Expo config file (**app.json**/ **app.config.js**) by runnning `npx expo prebuild`. These native projects can then be compiled and run via XCode and Android Studio.
+<img width="354" alt="Screenshot 2022-09-16 at 2 09 49 PM" src="https://user-images.githubusercontent.com/49722470/190630574-ae3e6e5f-ff34-4562-a79a-c3036a5f2b0f.png">
 
-> 💡 Learn more about [native code in Expo](https://docs.expo.dev/workflow/customizing/)
+2) autocomplete Api
+ <img width="354" alt="Screenshot 2022-09-16 at 2 11 10 PM" src="https://user-images.githubusercontent.com/49722470/190630692-87a61483-3619-4422-b844-13fea818cb10.png">
+ 
+ 3)Mapscreen
+ 
+<img width="354" alt="Screenshot 2022-09-16 at 2 10 09 PM" src="https://user-images.githubusercontent.com/49722470/190630780-b2e9cce3-e8b5-4bb5-b959-be6cf61d6087.png">
 
-## Publishing
+4) Enter destination
 
-- Deploy the native app to the App store and Play store using this guide: [Deployment](https://docs.expo.dev/distribution/app-stores/).
-- Deploy the website using this guide: [Web deployment](https://docs.expo.dev/distribution/publishing-websites/).
+<img width="354" alt="Screenshot 2022-09-16 at 2 10 20 PM" src="https://user-images.githubusercontent.com/49722470/190630847-57781867-449d-4576-842b-849a81e5c5b9.png">
 
-## 📝 Notes
+5) Routing api
 
-- Learn more about [Universal React](https://docs.expo.dev/).
-- See what API and components are [available in the React runtimes](https://docs.expo.dev/versions/latest/).
-- Find out more about developing apps and websites: [Guides](https://docs.expo.dev/guides/).
+<img width="354" alt="Screenshot 2022-09-16 at 2 10 36 PM" src="https://user-images.githubusercontent.com/49722470/190630891-c4f68c0a-28bc-4161-9d45-fa63b9541da8.png">
+
+6) distance calculated with time and boook your ride 
+
+<img width="354" alt="Screenshot 2022-09-16 at 2 10 47 PM" src="https://user-images.githubusercontent.com/49722470/190630997-1ad189b8-818c-4076-8b37-6fb838f64434.png">
+
+7) Error screen if no ride selected
+
+<img width="354" alt="Screenshot 2022-09-16 at 2 10 41 PM" src="https://user-images.githubusercontent.com/49722470/190631075-2108109c-a762-411b-8d10-e5d5a3fd62fe.png">
+
+
+8)Successfully booked ride
+
+<img width="354" alt="Screenshot 2022-09-16 at 2 10 53 PM" src="https://user-images.githubusercontent.com/49722470/190631146-2e10fe7b-c4ab-43a1-b6e2-7a0db5063a20.png">
+
