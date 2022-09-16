@@ -1,4 +1,4 @@
-import { SafeAreaView, View } from "react-native";
+import { SafeAreaView, TouchableOpacity, View } from "react-native";
 import { Text } from "react-native";
 import { useSelector } from "react-redux";
 import MapView, { Marker } from "react-native-maps";
@@ -8,6 +8,7 @@ import Map from "../components/map";
 import { NavigationContainer } from "@react-navigation/native";
 import NavigationCard from "../components/NavigationCard";
 import RideOptionsCrad from "../components/RideOptionsCard";
+import { Icon } from "react-native-elements";
 
 const Mapscreen = () => {
   const Stack = createStackNavigator();
@@ -16,6 +17,8 @@ const Mapscreen = () => {
   
   return (
     <View style={{ flexDirection: "column", display: "flex", flexGrow: 1 }}>
+      
+
       <Map origin={origin} destination={destination} />
       <SafeAreaView style={{flexGrow: 1 ,backgroundColor:"white"}}>
       

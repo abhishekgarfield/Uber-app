@@ -4,10 +4,15 @@ import MapView, { Marker, Polygon } from "react-native-maps";
 import { Polyline } from "react-native-maps";
 import { AUTOCOMPLETE_MAPS_APIKEY } from "@env";
 import { useDispatch } from "react-redux";
-import {settraveTimeinformation} from "../features/navslice"
+import { settraveTimeinformation } from "../features/navslice";
+import { TouchableOpacity } from "react-native";
+import { Icon } from "react-native-elements";
+import { SafeAreaView } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const Map = ({ origin, destination }) => {
-  const dispatch=useDispatch();
+  const navigation=useNavigation();
+  const dispatch = useDispatch();
   const [coorddata, setCoorddata] = useState(null);
   const [formattedCoordinate, setformattedCords] = useState(null);
 
@@ -19,10 +24,13 @@ const Map = ({ origin, destination }) => {
         return response.json();
       })
       .then((data) => {
-        dispatch(settraveTimeinformation({
-          time:(data.features[0].properties.time/60),
-          distance:(data.features[0].properties.distance/1000).toFixed(1)+" km"
-        }))
+        dispatch(
+          settraveTimeinformation({
+            time: data.features[0].properties.time / 60,
+            distance:
+              (data.features[0].properties.distance / 1000).toFixed(1) + " km",
+          })
+        );
         setCoorddata(data);
       });
   };
@@ -58,16 +66,36 @@ const Map = ({ origin, destination }) => {
   useEffect(() => {
     if (origin && destination) {
       mapRef.current.fitToSuppliedMarkers(["origin", "destination"], {
-        mapPadding: { top: 50, right: 50, bottom: 50, left: 100,  },
+        mapPadding: { top: 50, right: 50, bottom: 50, left: 100 },
       });
-    }else if(origin && !destination){
-            mapRef.current.fitToSuppliedMarkers(["origin"]);
+    } else if (origin && !destination) {
+      mapRef.current.fitToSuppliedMarkers(["origin"]);
     } else {
       return;
     }
-  },[origin,destination]);
+  }, [origin, destination]);
   return (
     <View style={{ backgroundColor: "red", flexGrow: 1 }}>
+      <SafeAreaView style={{ position: "absolute",zIndex:1,left:15,top:10}}>
+        <TouchableOpacity 
+        onPress={()=>{
+          navigation.goBack();
+        }}>
+          <Icon
+            name="arrowleft"
+            type="antdesign"
+            color="white"
+            size={28}
+            style={{
+              backgroundColor: "black",
+              borderRadius: 50,
+              padding: 5,
+              marginVertical: 5,
+            }}
+          />
+        </TouchableOpacity>
+      </SafeAreaView>
+
       <MapView
         ref={mapRef}
         style={{ flexGrow: 1 }}
