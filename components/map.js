@@ -21,7 +21,7 @@ const Map = ({ origin, destination }) => {
       .then((data) => {
         dispatch(settraveTimeinformation({
           time:(data.features[0].properties.time/60),
-          distance:data.features[0].properties.distance/1000
+          distance:data.features[0].properties.distance/1000+"km"
         }))
         setCoorddata(data);
       });
