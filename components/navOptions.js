@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { Icon } from "react-native-elements";
 import { useSelector } from "react-redux";
-import ErrorScreen from "../screens/errorshow";
 import Navfav from "./navfov";
 const data = [
   {
@@ -48,36 +47,40 @@ const NavOptions = () => {
         renderItem={({ item }) => (
           <>
             <TouchableOpacity
-            disabled={!origin}
+              disabled={!origin}
               onPress={() => {
-                if(item.screen=="Eatscreen")
-                {
-                  navigation.navigate("errorscreen",{
-                    error:"Uber eats not available yet"
-                  })
-                }
-                else{
-                navigation.navigate(item.screen);
+                if (item.screen == "Eatscreen") {
+                  navigation.navigate("errorscreen", {
+                    error: "Uber eats not available yet",
+                  });
+                } else {
+                  navigation.navigate(item.screen);
                 }
               }}
             >
               <View
-                style={(origin)?{
-                  backgroundColor: "lightgrey",
-                  alignItems: "flex-start",
-                  marginHorizontal: 10,
-                  width: 150,
-                  paddingHorizontal: 15,
-                  paddingVertical: 15,
-                  justifyContent: "center",
-                }:{
-                  opacity:0.6,backgroundColor: "lightgrey",
-                alignItems: "flex-start",
-                marginHorizontal: 10,
-                width: 150,
-                paddingHorizontal: 15,
-                paddingVertical: 15,
-                justifyContent: "center",}}
+                style={
+                  origin
+                    ? {
+                        backgroundColor: "lightgrey",
+                        alignItems: "flex-start",
+                        marginHorizontal: 10,
+                        width: 150,
+                        paddingHorizontal: 15,
+                        paddingVertical: 15,
+                        justifyContent: "center",
+                      }
+                    : {
+                        opacity: 0.6,
+                        backgroundColor: "lightgrey",
+                        alignItems: "flex-start",
+                        marginHorizontal: 10,
+                        width: 150,
+                        paddingHorizontal: 15,
+                        paddingVertical: 15,
+                        justifyContent: "center",
+                      }
+                }
               >
                 <Image
                   source={{ uri: item.image }}
@@ -102,11 +105,10 @@ const NavOptions = () => {
                 />
               </View>
             </TouchableOpacity>
-            
           </>
         )}
       />
-      <Navfav/>
+      <Navfav />
     </View>
   );
 };
