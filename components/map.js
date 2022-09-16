@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { View } from "react-native";
-import MapView, { Marker, Polygon } from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 import { Polyline } from "react-native-maps";
 import { AUTOCOMPLETE_MAPS_APIKEY } from "@env";
 import { useDispatch } from "react-redux";
@@ -11,7 +11,7 @@ import { SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 const Map = ({ origin, destination }) => {
-  const navigation=useNavigation();
+  const navigation = useNavigation();
   const dispatch = useDispatch();
   const [coorddata, setCoorddata] = useState(null);
   const [formattedCoordinate, setformattedCords] = useState(null);
@@ -75,11 +75,14 @@ const Map = ({ origin, destination }) => {
   }, [origin, destination]);
   return (
     <View style={{ backgroundColor: "red", flexGrow: 1 }}>
-      <SafeAreaView style={{ position: "absolute",zIndex:1,left:15,top:10}}>
-        <TouchableOpacity 
-        onPress={()=>{
-          navigation.goBack();
-        }}>
+      <SafeAreaView
+        style={{ position: "absolute", zIndex: 1, left: 15, top: 10 }}
+      >
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}
+        >
           <Icon
             name="arrowleft"
             type="antdesign"

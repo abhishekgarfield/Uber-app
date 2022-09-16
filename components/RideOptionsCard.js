@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import {
   FlatList,
   Image,
@@ -38,7 +38,9 @@ const data = [
   },
 ];
 const RideOptionsCrad = () => {
-  const timeinfo=useSelector(state=>state.navigation.travelTimeinformation);
+  const timeinfo = useSelector(
+    (state) => state.navigation.travelTimeinformation
+  );
   const [selected, setSelected] = useState(null);
   const navigation = useNavigation();
   useLayoutEffect(() => {
@@ -60,7 +62,7 @@ const RideOptionsCrad = () => {
             flexDirection: "row",
             justifyContent: "center",
             flexGrow: 1,
-            paddingVertical:7,
+            paddingVertical: 7,
             backgroundColor: "white",
           }}
         >
@@ -84,20 +86,26 @@ const RideOptionsCrad = () => {
         keyExtractor={(item) => {
           return item.id;
         }}
-        style={{flexGrow:2}}
+        style={{ flexGrow: 2 }}
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
-              style={(selected?.id==item.id)?{flexDirection: "row",
-              flexGrow: 1,
-              alignItems: "center",
-              backgroundColor: "lightgrey"}:{
-                flexDirection: "row",
-                flexGrow: 1,
-                alignItems: "center",
-                backgroundColor: "white",
-                paddingHorizontal:10
-              }}
+              style={
+                selected?.id == item.id
+                  ? {
+                      flexDirection: "row",
+                      flexGrow: 1,
+                      alignItems: "center",
+                      backgroundColor: "lightgrey",
+                    }
+                  : {
+                      flexDirection: "row",
+                      flexGrow: 1,
+                      alignItems: "center",
+                      backgroundColor: "white",
+                      paddingHorizontal: 10,
+                    }
+              }
               onPress={() => {
                 setSelected(item);
               }}
@@ -123,18 +131,20 @@ const RideOptionsCrad = () => {
                 >
                   {item.title}
                 </Text>
-                <Text style={{ textAlign: "center" }}>{timeinfo?.time}
-                <Text style={{color:"green"}}>{timeinfo?.distance}</Text></Text>
+                <Text style={{ textAlign: "center" }}>
+                  {timeinfo?.time}
+                  <Text style={{ color: "green" }}>{timeinfo?.distance}</Text>
+                </Text>
               </View>
               <Text style={{ fontSize: 20, flexGrow: 1, textAlign: "center" }}>
-                {`₹${item.multiplier*parseFloat(timeinfo?.distance)}`}
+                {`₹${item.multiplier * parseFloat(timeinfo?.distance)}`}
               </Text>
             </TouchableOpacity>
           );
         }}
       />
 
-      <SafeAreaView style={{ backgroundColor: "white",marginTop:10 }}>
+      <SafeAreaView style={{ backgroundColor: "white", marginTop: 10 }}>
         <TouchableOpacity
           style={{
             flexGrow: 1,
@@ -145,17 +155,14 @@ const RideOptionsCrad = () => {
             marginHorizontal: 10,
             borderRadius: 5,
           }}
-          onPress={()=>{
-             if(selected)
-             {
+          onPress={() => {
+            if (selected) {
               navigation.navigate("final");
-             }
-             else{
-              navigation.navigate("errorscreen",{
-                error:"Select your ride first !"
-              })
-             }
-             
+            } else {
+              navigation.navigate("errorscreen", {
+                error: "Select your ride first !",
+              });
+            }
           }}
         >
           <Text
