@@ -57,7 +57,7 @@ const NavigationCard = () => {
                   });
               }
             }}
-            defaultValue={text}
+            defaultValue={text}  
             style={{
               flexGrow: 1,
               flexBasis: 20,

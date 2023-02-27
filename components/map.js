@@ -74,7 +74,7 @@ const Map = ({ origin, destination }) => {
     }
   }, [origin, destination]);
   return (
-    <View style={{ backgroundColor: "red", flexGrow: 1 }}>
+    <View style={{ backgroundColor: "white", flexGrow: 1 }}>
       <SafeAreaView
         style={{ position: "absolute", zIndex: 1, left: 15, top: 10 }}
       >
@@ -102,6 +102,7 @@ const Map = ({ origin, destination }) => {
         ref={mapRef}
         style={{ flexGrow: 1 }}
         mapType="mutedStandard"
+        
         initialRegion={{
           latitude: origin.location.latitude,
           longitude: origin.location.longitude,
@@ -133,11 +134,15 @@ const Map = ({ origin, destination }) => {
             />
             {coorddata && (
               <Polyline
+              style={{}}
                 coordinates={formattedCoordinate}
                 strokeColor="black" // fallback for when `strokeColors` is not supported by the map-provider
                 strokeColors={["black"]}
                 strokeWidth={3}
+                lineDashPattern={[1]}
+
               />
+              
             )}
           </>
         )}
