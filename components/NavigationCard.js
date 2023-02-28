@@ -66,7 +66,7 @@ const NavigationCard = () => {
               paddingHorizontal: 8,
               paddingVertical: 17,
             }}
-            placeholder="Where to go ?"
+            placeholder="Where to go ?"  d
           />
           {text?.length > 0 && (
             <Icon
