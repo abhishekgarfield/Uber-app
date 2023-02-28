@@ -68,7 +68,7 @@ const NavigationCard = () => {
             }}
             placeholder="Where to go ?"  d
           />
-          {text?.length > 0 && (
+          {text?.length > 0 && (  
             <Icon
               name="close"
               type="antdesign"
