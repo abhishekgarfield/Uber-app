@@ -168,7 +168,7 @@ const RideOptionsCrad = () => {
           <Text
             style={{
               color: "white",    
-              textAlign: "center",
+              textAlign: "center",  
               fontSize: 25,
               padding: 15,
               fontWeight: "500",
