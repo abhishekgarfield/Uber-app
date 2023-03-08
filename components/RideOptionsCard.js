@@ -156,7 +156,7 @@ const RideOptionsCrad = () => {
             borderRadius: 5,
           }}
           onPress={() => {
-            if (selected) {      
+            if (selected) {        
               navigation.navigate("final");
             } else {
               navigation.navigate("errorscreen", {
