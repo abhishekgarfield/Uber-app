@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 
 const data = [
   {
-    id: "Uber-x-123",
+    id: "Uber-x-123", 
     title: "UberX",
     multiplier: 10,
     image: "https://links.papareact.com/3pn",
