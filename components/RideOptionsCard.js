@@ -5,7 +5,7 @@ import {
   Image,
   SafeAreaView,
   Text,
-  TouchableOpacity,
+  TouchableOpacity,   
   View,
 } from "react-native";
 import { Icon } from "react-native-elements";
